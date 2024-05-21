@@ -1,0 +1,53 @@
+{% extends 'movieapp/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<body>
+
+    <div class="container bg-light shadow-md p-5 form-layout">
+
+        <h3> Add Movies </h3>
+
+        <h6> Start adding your favorite movies here </h6>
+
+        <hr>
+        <br>
+
+
+
+        <form method="POST" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+
+
+            <button type="submit" class="btn btn-primary">
+
+                Add &nbsp; <i class="fa fa-check" aria-hidden="true"></i>
+
+            </button>
+
+            &nbsp;
+
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+
+
+                Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+            </a>
+
+
+        </form>
+
+    </div>
+
+    <br>
+
+</body>
+
+
+{% endblock %}
+
+

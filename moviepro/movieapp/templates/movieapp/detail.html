@@ -1,0 +1,25 @@
+{% extends 'movieapp/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto text-center">
+            <img src="{{ movie.poster.url }}" class="image-fluid" width="500" height="500" style="margin:20px; padding:20px;"><br>
+        </div>
+        <div class="mx-auto text-center" style="margin:20px; padding:20px;">
+            <h4>{{ movie.title }}</h4>
+            <h6>{{ movie.description }}</h6>
+            <h6>{{ movie.release_date }}</h6>
+            <h6>{{ movie.actors }}</h6>
+            <h6>{{ movie.category }}</h6>
+            <h6>
+                <a href="{{ movie.trailer }}" target="_blank">Watch Trailer</a>
+            </h6>
+            {% if movie.user == request.user %}
+            <a class="btn btn-dark" href="{% url 'update' movie.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'delete' movie.id %}">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
